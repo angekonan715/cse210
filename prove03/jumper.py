@@ -1,6 +1,14 @@
 import random
 import string
 class PlayerParachute:
+    """create a playerParachute oject
+    
+    responsibility: create and display  a parachute
+
+    Attributes:
+        parachute: list( of letter)
+        
+    """
     
     def __init__(self):
         self.parachute = []
@@ -19,6 +27,8 @@ class PlayerParachute:
         self.parachute = parachute
         return self.parachute
     
+    
+    # display paracute
     def displayParachute(self):
         print("")
         for i in self.parachute:
@@ -27,6 +37,15 @@ class PlayerParachute:
         print('^^^^^^^^')
 
 class Puzzle:
+    """create a Puzzle oject
+    
+    responsibility: create a list of letters, randomly choose 5 letters within that list and append
+                    to the list
+
+    Attributes:
+        puzzle(hidden) : list
+        
+    """
     def __init__(self):
         self._puzzle = []
     
@@ -44,20 +63,38 @@ class Puzzle:
         return secretWord
 
 class Player:
+    """create a Player oject
+    
+    responsibility: get an input letter from the user
+
+    Attributes:
+        playerGuess(hidden) : string
+        
+    """
     
     def __init__(self):
-        self.playerGuess = ''
-        self.is_guess_r = True
+        self._playerGuess = ''
         
     def player_input(self):
-        self.playerGuess = input("Guess a letter [a - z]: ").lower()
-        return self.playerGuess
+        self._playerGuess = input("Guess a letter [a - z]: ").lower()
+        return self._playerGuess
     
     
        
                 
 
 class Directory:
+    """create a Directory oject
+    
+    Responsibilities: evaluate user guess and play the game
+
+    Attributes:
+        player(hidden): Player()
+        puzzle(hidden): Puzzle()
+        playerParachute(hidden): playerParachute()
+        hiddenWord(hidden): list
+        
+    """
     
     def __init__(self):
         self._player = Player()
@@ -70,11 +107,9 @@ class Directory:
         for item in puzzle:
             if item == guess:
                 return True
-                
-    
         
         
-    def startPlaying(self):
+    def _startPlaying(self):
         parachute = self._playerParachute.parachuteList()
         puzzle = self._puzzle._secretWordList()
         while (len(parachute) > 3 and puzzle != self._hiddenWord):
@@ -98,6 +133,6 @@ class Directory:
 
 def main():
     director = Directory()
-    director.startPlaying()
+    director._startPlaying()
 if __name__ == "__main__":
     main()
