@@ -1,5 +1,5 @@
-#Prove03 : Jumper Specification
-#Prove03 : Jumper Specification
+
+# Prove03 : Jumper Specification
 
 ## PlayerParachute Object
 It creates a parachute using a list called parachute.
