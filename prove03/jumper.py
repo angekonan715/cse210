@@ -18,6 +18,13 @@ class PlayerParachute:
         ]
         self.parachute = parachute
         return self.parachute
+    
+    def displayParachute(self):
+        print("")
+        for i in self.parachute:
+            print(i, sep = '')
+        print("")
+        print('^^^^^^^^')
 
 class Puzzle:
     def __init__(self):
@@ -40,18 +47,14 @@ class Player:
     
     def __init__(self):
         self.playerGuess = ''
-        self.is_guessRight = True
+        self.is_guess_r = True
         
     def player_input(self):
         self.playerGuess = input("Guess a letter [a - z]: ").lower()
         return self.playerGuess
     
-    def guess_r(self):
-        return self.is_guess
     
-    def guess_w(self):
-        self.is_guessRight = False
-        return self.is_guessRight
+       
                 
 
 class Directory:
@@ -62,33 +65,39 @@ class Directory:
         self._playerParachute = PlayerParachute()
         self._hiddenWord = ['_','_','_','_','_']
         
-    def startPlaying(self):
         
+    def guess_r(self, puzzle, guess):
+        for item in puzzle:
+            if item == guess:
+                return True
+                
+    
+        
+        
+    def startPlaying(self):
         parachute = self._playerParachute.parachuteList()
         puzzle = self._puzzle._secretWordList()
-        for j in self._hiddenWord:
-            print(j, end = ' ')
-        print('')
-        for s in parachute:
-            print(s, sep = '')
-        print('^^^^^^^^')
-        guess = self._player.player_input()
-        for item in puzzle:
-            if (item != guess):
-                parachute = parachute
+        while (len(parachute) > 3 and puzzle != self._hiddenWord):
+            for j in self._hiddenWord:
+                print(j, end = ' ')
+            print('')
+            self._playerParachute.displayParachute()
+            guess = self._player.player_input()
+            
+            is_guess_true = self.guess_r(puzzle, guess)
+            if not (is_guess_true):
+                del parachute[0]
+                self._playerParachute.displayParachute()
+                print(puzzle)
             else:
                 index_item = puzzle.index(guess)
-                print(index_item)
                 self._hiddenWord[index_item]= guess
-        print(self._hiddenWord)
-        print(puzzle)
-                
-                
-               
-                
-        
-        
-        
-d = Directory()
-d.startPlaying()
+        print("")
+        print("============ Game is over =============")
 
+
+def main():
+    director = Directory()
+    director.startPlaying()
+if __name__ == "__main__":
+    main()
