@@ -58,10 +58,6 @@ class Puzzle:
             i += 1
         return self._puzzle
     
-    def secretWord(self):
-        secretWord = ''.join(self._puzzle)
-        return secretWord
-
 class Player:
     """create a Player oject
     
@@ -122,8 +118,6 @@ class Directory:
             is_guess_true = self.guess_r(puzzle, guess)
             if not (is_guess_true):
                 del parachute[0]
-                self._playerParachute.displayParachute()
-                print(puzzle)
             else:
                 index_item = puzzle.index(guess)
                 self._hiddenWord[index_item]= guess
