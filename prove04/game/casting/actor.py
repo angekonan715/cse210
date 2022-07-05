@@ -1,6 +1,6 @@
 from shared.color import Color
 from shared.point import Point
-
+import random
 
 class Actor:
     """A visible, moveable thing that participates in the game. 
@@ -90,7 +90,7 @@ class Actor:
         Args:
             position (Point): The given position.
         """
-        self._position = position
+        self._position = position 
     
     def set_font_size(self, font_size):
         """Updates the font size to the given one.
