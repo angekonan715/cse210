@@ -26,7 +26,7 @@ ROWS = 40
 CAPTION = "Greed"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "\data\messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 10
+DEFAULT_ARTIFACTS = random.randint(10, 100)
 
 
 def main():
